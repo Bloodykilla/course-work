@@ -1,0 +1,26 @@
+.line {
+    width:100vw;
+    background-color: "#";
+    position: fixed;
+    bottom:27%;
+    left:0;
+    transform: rotate(-11deg);
+    transform: skewY(-11deg);
+    height:26rem;
+    border:none;
+    animation-name:line;
+    animation-duration: 2s;
+    animation-direction: normal;
+    z-index:-99999;
+
+}
+@keyframes line {
+   from {
+        left:-100%;
+        bottom:-80%;
+    }
+    to {
+        left:0%;
+        bottom: 27%;
+    }
+}

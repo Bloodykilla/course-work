@@ -1,0 +1,121 @@
+.auth {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:5rem 0;
+
+    a {
+        text-decoration: none;
+        color:#dcdcdcdc;
+        margin:1rem 0;
+        padding-left:2rem;
+    }
+        .auth-area {
+            width:800px;
+            display:flex;
+            background-color:#222222;
+            border-radius: 2rem;
+            align-items: center;
+            animation-name:auth;
+            animation-duration:1s;
+
+
+            .auth-info{
+                color:#fff;
+                height:100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .title-text {
+                    padding: 2rem;
+                    text-align: center;
+
+                    span:last-child {
+                        color:#F25858;
+                    }
+
+                    h6 {
+                        padding: 1rem 0;
+                        font-weight: 200;
+                        margin:0;
+                    }
+                }
+                .form {
+                    padding:0rem 2rem 0.5rem;
+                    
+                    .text {
+                        width:100%;
+                        background-color: 	 #404040;
+                        border:none;
+                        border-radius: 0.5rem;
+                        appearance: none;
+                        outline: none;
+                        padding:0.7rem;
+                        color:#dcdcdc;
+                    }
+                    h6 {
+                        padding: 1rem 0 0.5rem;
+                    }
+
+        
+                }
+               
+
+                   
+                .buttons {
+                    padding: 1rem 1rem;
+                    display: flex;
+                    justify-content: space-around;
+            
+                    .btn {
+                        border:none;
+                        outline: none;
+                        background-color:#DE3F3F;
+                        color:#fff;
+                        padding:1rem 1rem;
+                        transition: 0.3s linear;
+                        width:100%;
+                   }
+
+
+
+                   
+
+                    .btn:hover {
+                        color:#DE3F3F;
+                        background-color:#fff;
+                    }
+                   .btn:focus {
+                        box-shadow: none;
+                   }
+                }
+            }
+
+            .auth-sidebar {
+                display: flex;
+                align-items: right;
+                border-radius:2rem;
+                .figure {
+                   
+                    .auth-img {
+
+                        height:100%;
+                        width:100%;
+                        border-radius: 0 2rem 2rem 0;
+
+                    }
+                }
+            }
+        }     
+}
+
+
+
+@keyframes auth {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}

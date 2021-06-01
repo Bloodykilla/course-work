@@ -12,7 +12,7 @@ const HotelTypeBar = observer(() => {
 
 
     return (
-        <div className="country-filter">     
+        <div className="hotelType-filter">     
             <Form.Group controlId="controlId">
 
                 <Dropdown className='pb-3'>

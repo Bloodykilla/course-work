@@ -2,21 +2,22 @@ import {makeAutoObservable} from 'mobx';
 
 export default class hotelStore {
     constructor() {
-       this._hotels = [
+       this._hotels = []
 
-       ]
+
+       this._selectedHotel = {}
        makeAutoObservable(this)
     }
-    setSelectedHotels(hotel) {
-        this._selectedHotels = hotel
+    setSelectedHotel(hotel) {
+        this._selectedHotel = hotel
     }
 
     setHotels(hotels) {
         this._hotels = hotels
     }
     
-    get selectedHotels() {
-        return this._selectedHotels
+    get selectedHotel() {
+        return this._selectedHotel
     }
 
 

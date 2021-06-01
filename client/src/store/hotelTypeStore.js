@@ -5,12 +5,12 @@ export default class hotelTypeStore {
        this._hotelTypes = []
     
 
-       this._selectedType = {}
+       this._selectedHotelType = {}
        makeAutoObservable(this)
     }
 
-    setSelectedHotelType(hotelTypes) {
-        this._selectedType = hotelTypes
+    setSelectedHotelType(hotelType) {
+        this._selectedHotelType = hotelType
     }
 
     setHotelTypes(hotelTypes) {

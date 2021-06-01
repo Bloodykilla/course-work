@@ -1,14 +1,10 @@
+require('dotenv').config()
+
 const Pool = require('pg').Pool
 
-
-const pool = new Pool ({
-
-    user:'itsadmin',
-    password:'admin',
-    host:'localhost',
-    database:'travel_agency',
-    port:5432
-
+const connectionString = process.env.READ_ONLY_URL
+const pool = new Pool({
+    connectionString
 })
 
 

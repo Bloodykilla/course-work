@@ -8,7 +8,7 @@ class hotelController {
         const {img} = req.files
         let fileName = uuid.v4() + '.jpg'
         img.mv(path.resolve(__dirname, '..', 'static', fileName))
-        const hotel = await db.query(`INSERT INTO hotel (name, adress,hotel_type_id, city_id,rang, img) VALUES($1,$2,$3,$4,$5,$6) RETURNING *`,[name,adress,hotel_type_id, city_id,rang,filename])
+        const hotel = await db.query(`INSERT INTO hotel (name, adress,hotel_type_id, city_id,rang, img) VALUES($1,$2,$3,$4,$5,$6) RETURNING *`,[name,adress,hotel_type_id, city_id,rang,fileName])
         res.json(hotel.rows[0])
     }
 

@@ -2,7 +2,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/esm/Button'
 import Col from 'react-bootstrap/esm/Col'
-import Row from 'react-bootstrap/esm/Row'
+
 import {useHistory} from 'react-router-dom'
 import Image from 'react-bootstrap/Image'
 import { TOURS_ROUTE } from '../utils/const'

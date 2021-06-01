@@ -41,8 +41,9 @@ class cityController {
     async delete(req,res) {
         const id = req.params.id
         const city = await db.query(`DELETE from city where id = $1`,[id])
-        res.json(city.rows[0])
+        res.json(city.rows[0])   
     }
+ 
 
 
 }

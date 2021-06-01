@@ -39,8 +39,10 @@ export const createTour = async(tour) => {
     return data
 }
 
-export const fetchTour = async() => {
-    const {data} = await $host.get('api/tour')
+export const fetchTour = async(country_id,price,hrang,tour_type_id, limit = 5) => {
+    const {data} = await $host.get('api/tour', {params: {
+        country_id,price,hrang,tour_type_id, limit
+    }})
     return data
 }
 export const fetchOneTour = async(id) => {

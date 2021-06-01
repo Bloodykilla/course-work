@@ -59,10 +59,10 @@ const ControllTabs = observer(() => {
     return (
       <tr key={hotel.id}>
           <td>{hotel.id}</td>
-          <td>{hotel.name}</td>
+          <td>{hotel.hotel}</td>
           <td>{hotel.adress}</td>
           <td>{hotel.rang}</td>
-          <td>{hotel.htype}</td>
+          <td>{hotel.type}</td>
           <td>{hotel.city}</td>
           <td>{hotel.country}</td>
           <td className="d-flex justify-content-center align-items-center">

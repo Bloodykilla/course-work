@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = 5000;
-const pool = require('./db');
+const pool= require('./db');
 const router = require('./routes/index');
 const fileUpload = require('express-fileupload')
 const errorHandler = require('./middleware/errorHandlingMiddleware')
@@ -21,9 +21,7 @@ const start = async () => {
         app.listen(PORT, () => console.log(`Server started on ${PORT}`));
         pool.connect()
             .then(() => console.log(`database connected!`))
-            .catch(e => console.log(e))
 
-        
     } catch(e) {
         console.log(e)
     }

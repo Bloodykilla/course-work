@@ -4,58 +4,60 @@ const db = require('../db')
 
 class tourController {
     async create(req,res) {
-        const {name,price,tour_type_id,date_to,date_back,check_in,check_out,aviability,room_id} = req.body
+        const {name,price,tour_type_id,date_to,date_back,check_in,check_out,room_id} = req.body
         const {img} = req.files
         let fileName = uuid.v4() + '.jpg'
         img.mv(path.resolve(__dirname, '..', 'static', fileName))
-        const tour = await db.query(`INSERT INTO tour (name,price,tour_type_id,date_to,date_back,check_in,check_out,aviability,room_id,img) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,[name,price,tour_type_id,date_to,date_back,check_in,check_out,aviability,room_id,fileName])
+        const tour = await db.query(`INSERT INTO tour (name,price,tour_type_id,date_to,date_back,check_in,check_out,room_id,img) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,[name,price,tour_type_id,date_to,date_back,check_in,check_out,room_id,fileName])
         res.json(tour.rows[0])
     }
 
     async getAll(req,res) {
-        let {tour,price,to,back,ttype, country,hrang,htype} = req.query
-
+        let {tour,price,to,back,ttype, country,hrang,htype, limit, page} = req.query
+        page = page || 1
+        limit = limit || 9
+        let offset = page * limit - limit
         let tours
-        if (tour && price && ttype && to ) {
+        if (tour && price && ttype && to && country) {
          tours = await db.query(
-             `SELECT * FROM TourInfo where tour = $1 and price = $2 and ttype = $3 and to = $4`,
-             [tour,price,ttype,to]
+             `SELECT * FROM tourinfo where tour = $1 and price = $2 and ttype = $3 and to = $4 and country = $5`,
+             [tour,price,ttype,to,coutnry,limit,offset]
              )}
 
         if (!tour && !price && ! ttype && !to ) {
          tours = await db.query(
-             `SELECT * FROM TourInfo `,
-             )
+             `SELECT * FROM tourinfo `,
+             ),[limit,offset]
         }
         if (tour && !price && !ttype && !to) {
             tours = await db.query(
-                `SELECT * FROM TourInfo where tour = $1`,[tour,limit]
+                `SELECT * FROM tourinfo where tour = $1`,[tour,limit,offset]
             )
         }
         if (!tour && !price && ttype && !to && !back && !country && !hrang && !htype) {
             tours = await db.query(
-                `SELECT * FROM TourInfo where ttype = $1`,[ttype]
+                `SELECT * FROM tourinfo where ttype = $1`,[ttype,limit,offset]
             )
         }
         if (!tour && price && !ttype && !to && !back && !country && !hrang && !htype) {
             tours = await db.query(
-                `SELECT * FROM TourInfo where price between  MIN(price) and $1`,[price]
+                `SELECT * FROM tourinfo where price between  MIN(price) and $1`,[price,limit,offset]
             )
         }      
         if (!tour && !price && !ttype && to && !back && !country && !hrang && !htype) {
             tours = await db.query(
-                `SELECT * FROM TourInfo where to =$1`,[to]
+                `SELECT * FROM tourinfo where to =$1`,[to,limit,offset]
             )
         }    
         if (!tour && !price && !ttype && !to && !back && country && !hrang && !htype) {
             tours = await db.query(
-                `SELECT * FROM TourInfo where country = $1`,[country]
+                `SELECT * FROM tourinfo where country = $1`,[country,limit,offset]
             )
         }  
         
         if (!tour && !price && !ttype && !to && !back && !country && hrang && !htype) {
             tours = await db.query(
-                `SELECT * FROM TourInfo where hrang = $1`,[hrang]
+                `SELECT * FROM tourinfo where hrang = $1`,[hrang],limit,offset
             )
         } 
         res.json(tours.rows)
@@ -63,7 +65,7 @@ class tourController {
 
     async getOne(req,res) {
         const id = req.params.id
-        const tour = await db.query (`SELECT * FROM TourInfo where id = $1`,[id])
+        const tour = await db.query (`SELECT * FROM tourinfo where id = $1`,[id])
         res.json(tour.rows[0])
     }
 

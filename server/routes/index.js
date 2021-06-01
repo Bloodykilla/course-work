@@ -9,7 +9,7 @@ const HotelRouter = require('./hotelRouter')
 const HotelTypeRouter = require('./hotelTypeRouter')
 const RoomTypeRouter = require('./roomTypeRouter')
 const RoomRouter = require('./roomRouter')
-
+const UserRouter = require('./userRouter')
 
 router.use('/country', CountryRouter)
 router.use('/city', CityRouter)
@@ -19,6 +19,6 @@ router.use('/hotel', HotelRouter)
 router.use('/hotel-type',HotelTypeRouter)
 router.use('/room-type', RoomTypeRouter)
 router.use('/room', RoomRouter)
-
+router.use('/user', UserRouter)
 
 module.exports = router

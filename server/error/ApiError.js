@@ -5,7 +5,7 @@ class ApiError extends Error {
         this.message = message
     }
 
-    static badRequest(messga) {
+    static badRequest(message) {
         return new ApiError(404,message)
     }
     static iternal(messga) {
@@ -15,3 +15,5 @@ class ApiError extends Error {
         return new ApiError(403,message)
     }
 }
+
+module.exports = ApiError

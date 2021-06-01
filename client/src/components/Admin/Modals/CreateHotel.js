@@ -5,24 +5,23 @@ import Form from 'react-bootstrap/Form'
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import { Context } from '../../..'
-import {createHotel, fetchCity,fetchHotelType} from '../../../http/tourAPI'
-import {fetchCountry} from '../../../http/tourAPI'
+import {createHotel} from '../../../http/tourAPI'
+import {fetchCity} from '../../../http/tourAPI'
+import {fetchHotelType} from '../../../http/tourAPI'
+
 
 import { observer } from 'mobx-react-lite'
 import FormLabel from 'react-bootstrap/esm/FormLabel'
-import CountryBar from '../../CountryBar'
-import HotelTypeBar from '../../HotelTypeBar'
+
 
 
 const CreateHotel =  observer(({show, onHide}) => {
 
     const {hotelTypes} = useContext(Context)
-    const {countries} = useContext(Context)
     const {cities} = useContext(Context)
 
 
     useEffect(() => {
-        fetchCountry().then(data => countries.setCountries(data))
         fetchHotelType().then(data => hotelTypes.setHotelTypes(data))
         fetchCity().then(data => cities.setCities(data))
     },[])
@@ -35,9 +34,9 @@ const CreateHotel =  observer(({show, onHide}) => {
     const [file, setFile] = useState(null)
 
     
-    const selectedFile = e => {
-     setFile(e.target.files[0])
-    }
+    const selectFile = e => {
+      setFile(e.target.files[0])
+  }
 
     const addHotel = () => {
         
@@ -45,8 +44,9 @@ const CreateHotel =  observer(({show, onHide}) => {
         formData.append('name', name)
         formData.append('adress', adress)
         formData.append('city_id', cities.selectedCities.id)
+        formData.append('hotel_type_id', hotelTypes.selectedHotelType.id)
         formData.append('rang', rang)
-        formData.append('img', file.selectedFile.name)
+        formData.append('img', file)
         createHotel(formData).then(data => onHide())
     }
 
@@ -91,14 +91,11 @@ const CreateHotel =  observer(({show, onHide}) => {
        
         </div>   
          <div className="d-flex">
-             <div>
-        <Form.Label>Choose hotel type</Form.Label>
-                  <HotelTypeBar />
-        </div>
+       
 
-                  <div className = 'pl-5'>
+                  <div >
         <Form.Label>Choose city</Form.Label>
-         <Dropdown className='pb-3'>
+         <Dropdown>
             
             <Dropdown.Toggle variant="primary" id="dropdown-basic">
                {cities.selectedCities.name || 'city'}
@@ -117,6 +114,31 @@ const CreateHotel =  observer(({show, onHide}) => {
             </Dropdown.Menu>        
         </Dropdown>
         </div>
+        <div className="pl-5">
+        <Form.Label>Choose hotel type</Form.Label>
+        <Form.Group controlId="controlId">
+
+        <Dropdown className='pb-3'>
+            
+            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+               {hotelTypes.selectedHotelType.name || 'hotel type'}
+            </Dropdown.Toggle>
+           
+            <Dropdown.Menu  style={{height:'300px',overflowY:'scroll'}}>
+                {hotelTypes.hotelTypes.map(hotelType =>
+                <Dropdown.Item 
+                
+                    onClick={() => hotelTypes.setSelectedHotelType(hotelType)}
+                    key={hotelType.id}>
+
+                    {hotelType.name}
+                </Dropdown.Item>
+               )}
+            </Dropdown.Menu>        
+        </Dropdown>
+
+            </Form.Group>
+        </div>
         </div>
 
     
@@ -126,7 +148,7 @@ const CreateHotel =  observer(({show, onHide}) => {
         <Form className='pb-3'>
             <Form.Control 
             type='file'
-            onChange = {selectedFile}
+            onChange = {selectFile}
          
             />
          </Form>

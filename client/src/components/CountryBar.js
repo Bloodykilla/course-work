@@ -17,11 +17,11 @@ const CountryBar = observer(() => {
                 <Form.Label>Choose country</Form.Label>
                 <Dropdown className='pb-3'>
             
-            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+            <Dropdown.Toggle variant="primary" id="dropdown-basic" style={{width:'210px'}}>
                {countries.selectedCountry.name || 'Destination'}
             </Dropdown.Toggle>
            
-            <Dropdown.Menu>
+            <Dropdown.Menu style={{width:'210px'}}>
                 {countries.countries.map(country =>
                 <Dropdown.Item 
                 

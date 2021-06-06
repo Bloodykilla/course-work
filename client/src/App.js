@@ -1,6 +1,7 @@
 import React,{useContext, useEffect} from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
+
 import {fetchTourType,  fetchCountry, fetchTour, fetchHotelType, fetchCity, fetchHotel, fetchRoomType, fetchRoom} from './http/tourAPI'
 
 import {Context} from './index'
@@ -38,8 +39,9 @@ const App = () => {
       <BrowserRouter> 
      
         <AppRouter />
- 
+
       </BrowserRouter>
+     
     );
 };
 export default App;

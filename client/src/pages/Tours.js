@@ -8,6 +8,7 @@ import TourList from '../components/TourList'
 import NavBar from '../components/NavBar'
 
 import { observer } from 'mobx-react-lite'
+import Footer from '../components/Footer'
 
 
 
@@ -35,6 +36,7 @@ const Tours = observer(() => {
             </Row>
         </Container>
      </div>
+     <Footer/>
     </>
     )
 })

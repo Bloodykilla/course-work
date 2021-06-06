@@ -44,7 +44,7 @@ const TourItem = ({tour})=> {
                                 <div className="tour-raiting d-flex flex-column align-items-center pr-1">
                                     <div>Rate: </div>
                                     <div className='d-flex justify-content-center  align-items-center' style={{width:'3rem',height:'3rem', borderRadius:'50%',border:'2px solid #222222'}}>
-                                        <span style={{fontSize:'2rem'}}>
+                                        <span style={{fontSize:'1.5rem'}}>
                                             {tour.tour_rate}
                                         </span>
                                     </div>

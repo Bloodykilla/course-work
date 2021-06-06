@@ -6,6 +6,7 @@ import Img from 'react-bootstrap/Image';
 import NavBar from '../components/NavBar';
 
 import ControllTabs from '../components/Admin/ControllTabs'
+import Footer from '../components/Footer';
 
 const Admin = () => {
 
@@ -36,6 +37,7 @@ const Admin = () => {
                    </div>
              </div>
         </Container>
+        <Footer/>
     </div>
     </>
     )

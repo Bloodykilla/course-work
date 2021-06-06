@@ -115,7 +115,7 @@ const ControllTabs = observer(() => {
 
   return (
     <Tabs
-      defaultActiveKey="NavigationTabs" transition={false} id="noanim-tab-example"> 
+      defaultActiveKey="NavigationTabs" transition={false} id="noanim-tab-example" style={{height:'100%'}}> 
     
       <Tab eventKey="Tours" title="Tours" color="light">
           <Table striped bordered hover>

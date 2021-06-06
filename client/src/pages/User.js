@@ -2,13 +2,13 @@ import React from 'react'
 import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
 
-function Support() {
+const User = () => {
     return (
         <div>
-            <NavBar/>
-            <Footer/>
+                <NavBar/>
+                <Footer/>
         </div>
     )
 }
 
-export default Support
+export default User

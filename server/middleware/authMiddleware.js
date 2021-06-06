@@ -8,7 +8,7 @@ module.exports = function(req, res, next) {
         const jwtToken = req.headers.authorization.split(' ')[1];
 
         if (!jwtToken) {
-            return res.status(403).json('Not authorized')
+            return res.status(403).json({message:'Not authorized'})
         }
 
         const decoded = jwt.verify(jwtToken, process.env.SECRET_KEY);
@@ -18,6 +18,6 @@ module.exports = function(req, res, next) {
 
     } catch(err) {
         console.log(err.message);
-        return res.status(403).json('Not authorize');
+        return res.status(403).json({message:'Not authorize'});
     }
 }

@@ -1,10 +1,17 @@
 import React, { useContext } from 'react'
 import {Context} from '../index'
 import {observer} from 'mobx-react-lite';
-import { ADMIN_ROUTE, FAQ_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE, SUPPORT_ROUTE, TOURS_ROUTE } from '../utils/const';
-import { Link} from 'react-router-dom';
+import {BASKET_ROUTE, FAQ_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE, SUPPORT_ROUTE, TOURS_ROUTE, USER_ROUTE } from '../utils/const';
+import { Link, useHistory} from 'react-router-dom';
+
 const NavBar = observer(() => {
     const {user} = useContext(Context)
+    const history = useHistory()
+    const logout = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+        history.push(LOGIN_ROUTE)
+    }
     return (
         <nav>
             <div className="Navbar">
@@ -42,24 +49,24 @@ const NavBar = observer(() => {
                 <div className="nav-right">
                 {user.isAuth ?
                     <div className="user-btns">
-                        <i class="fas fa-shopping-basket"></i>
-                        &nbsp;&nbsp;
-                        <i class="fas fa-user"></i> 
-                        &nbsp;&nbsp;
-                        <Link to ={ADMIN_ROUTE}>
-                            <button className="btns"><a>Admin</a></button>
+                        <Link to  ={BASKET_ROUTE}>
+                        <i class="fas fa-shopping-basket" style={{color:"#222222"}}></i>
                         </Link>
                         &nbsp;&nbsp;
-                        <button className="btns"onClick={() => user.setIsAuth(false)}><a>Logout</a></button>
+                        <Link to = {USER_ROUTE}>
+                        <i class="fas fa-user" style={{color:"#222222"}}></i> 
+                        </Link>
+                        &nbsp;&nbsp;
+                        <button className="btns"onClick={() => logout()}><a>Logout</a></button>
                        
                     </div>
                 :
                 <div className="user-btns">
-                  <a style={{fontSize:'1.5rem', cursor:'pointer'}} onClick={() => user.setIsAuth(true)}>Login</a>
+                  <a style={{fontSize:'1.5rem', cursor:'pointer'}} onClick={() => history.push(LOGIN_ROUTE)}>Login</a>
                     <span>or</span>
-                   <Link to={REGISTRATION_ROUTE}>
-                    <button className="btns"><a>Sign Up</a></button>
-                    </Link>
+
+                    <button className="btns" onClick={() => history.push(REGISTRATION_ROUTE)}><a>Sign Up</a></button>
+
                 </div>
             }
             </div>

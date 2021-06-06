@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/esm/Container'
 import Image from 'react-bootstrap/esm/Image'
 
 import { useParams } from 'react-router'
+import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
 import { fetchOneTour } from '../http/tourAPI'
 
@@ -162,7 +163,50 @@ const TourPage = observer(() => {
                     </div>
                     
                 </div>
-
+                <div className="tour-page d-flex pt-5 pb-5 justify-content-between">
+                    
+              
+                    <div className="tour-page--info mr-5 ml-5" style={{width:'100%',borderTop:'1px solid rgb(0,0,0,0.2)',borderBottom:'1px solid rgb(0,0,0,0.2)',}}>
+                        <div className="tour-page__info--title p-3">
+                             <h3 style={{fontWeight:"bold", margin:'0',fontSize:'1.3rem',textTransform:"uppercase",textAlign:'center'}}>Hotel Info</h3>
+                        </div>
+                        <div className="tour-page__info--text" style={{width:'100%'}}>
+                             <div className="d-flex flex-column justify-content-around" style={{fontWeight:'600', letterSpacing:'1px'}}>
+                                 <div className="d-flex justify-content-between">
+                                     <span>Hotel adress:</span>
+                                     <span>{tour.adress}</span>
+                                 </div>
+                                 <div className="d-flex justify-content-between pt-3">
+                                     <span>Hotel type:</span>
+                                     <span>{tour.htype}</span>
+                                 </div>
+                                
+                                 <div className="d-flex justify-content-between pt-3">
+                                     <span>Hotel rang:</span>
+                                     <span>{tour.hrang} <i class="fas fa-star"></i></span>
+                                 </div>
+                                 <div className="d-flex justify-content-between pt-3">
+                                     <span>Room type:</span>
+                                     <span>{tour.rtype}</span>
+                                 </div>
+                                 <div className="d-flex justify-content-between pt-3">
+                                     <span>Room number:</span>
+                                     <span>{tour.room}</span>
+                                 </div>
+                               
+                                 
+                             </div>
+                        </div>
+                    
+                      
+                    </div>
+                    <div className="img-slider d-flex justify-content-center">
+                       
+                        <Image src={process.env.REACT_APP_API_URL + tour.himg} width={750}/>
+                    </div>
+                </div>
+ 
+ 
             </Col>
 
             <Col md={3}>
@@ -171,6 +215,7 @@ const TourPage = observer(() => {
             </div>
         </Container>
         </div>
+        <Footer/>
         </>
     )
 })

@@ -172,17 +172,21 @@ const TourPage = observer(() => {
                         </div>
                         <div className="tour-page__info--text" style={{width:'100%'}}>
                              <div className="d-flex flex-column justify-content-around" style={{fontWeight:'600', letterSpacing:'1px'}}>
-                                 <div className="d-flex justify-content-between">
-                                     <span>Hotel adress:</span>
+                             <div className="d-flex justify-content-between">
+                                     <span>Name:</span>
+                                     <span>{tour.hotel}</span>
+                                 </div>
+                                 <div className="d-flex justify-content-between pt-3">
+                                     <span> Adress:</span>
                                      <span>{tour.adress}</span>
                                  </div>
                                  <div className="d-flex justify-content-between pt-3">
-                                     <span>Hotel type:</span>
+                                     <span>Type:</span>
                                      <span>{tour.htype}</span>
                                  </div>
                                 
                                  <div className="d-flex justify-content-between pt-3">
-                                     <span>Hotel rang:</span>
+                                     <span>Rang:</span>
                                      <span>{tour.hrang} <i class="fas fa-star"></i></span>
                                  </div>
                                  <div className="d-flex justify-content-between pt-3">

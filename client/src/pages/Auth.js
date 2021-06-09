@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router'
 
 import { NavLink } from 'react-router-dom'
 import AuthImg from '../assets/img/auth-img.jpg'
-import { LOGIN_ROUTE, ADMIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE} from '../utils/const'
+import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE} from '../utils/const'
 import NavBar from '../components/NavBar.js'
 import Footer from '../components/Footer'
 import { login, registration } from '../http/userApi'
@@ -32,7 +32,7 @@ const Auth = observer(() => {
             }
             user.setUser(user)
             user.setIsAuth(true)
-
+            history.push(MAIN_ROUTE)
         } catch (e) {
             alert(e.response.data.message)
         }

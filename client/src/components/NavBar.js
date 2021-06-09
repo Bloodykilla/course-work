@@ -7,10 +7,11 @@ import { Link, useHistory} from 'react-router-dom';
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const history = useHistory()
-    const logout = () => {
+
+    const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
-        history.push(LOGIN_ROUTE)
+        history.push(MAIN_ROUTE)
     }
     return (
         <nav>
@@ -57,7 +58,7 @@ const NavBar = observer(() => {
                         <i class="fas fa-user" style={{color:"#222222"}}></i> 
                         </Link>
                         &nbsp;&nbsp;
-                        <button className="btns"onClick={() => logout()}><a>Logout</a></button>
+                        <button className="btns"onClick={() => logOut()}><a>Logout</a></button>
                        
                     </div>
                 :

@@ -20,9 +20,7 @@ export const authRoutes = [
     {
         path:USER_ROUTE,
         Component:User
-    }
-]
-export const workerRoute = [
+    },
     {
         path:ADMIN_ROUTE,
         Component:Admin
@@ -30,9 +28,10 @@ export const workerRoute = [
     {
         path:MANAGER_ROUTE,
         Component:Manager
-    },
+    }
 
 ]
+
 export const publicRoutes = [
     {
         path:MAIN_ROUTE,

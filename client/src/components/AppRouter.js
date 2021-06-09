@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext} from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
-import { authRoutes, publicRoutes, workerRoute } from '../routes'
+import { authRoutes, publicRoutes} from '../routes'
 import { MAIN_ROUTE } from '../utils/const'
 import {Context} from '../index'
 
+
 const AppRouter = () => {
     const {user} = useContext(Context)
+    
 
     console.log(user)
     return (
@@ -13,9 +15,9 @@ const AppRouter = () => {
             {user.isAuth && authRoutes.map(({path, Component}) =>
             <Route key={path} path={path} component={Component} exact/>
             )}
-             {user.isAuth && workerRoute.map(({path, Component}) =>
-            <Route key={path} path={path} component={Component} exact/>
-            )}
+
+           
+            
              {publicRoutes.map(({path, Component}) =>
             <Route key={path} path={path} component={Component} exact/>
             )}
